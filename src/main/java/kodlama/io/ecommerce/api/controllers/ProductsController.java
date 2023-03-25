@@ -2,19 +2,17 @@ package kodlama.io.ecommerce.api.controllers;
 
 import kodlama.io.ecommerce.business.abstracts.ProductService;
 import kodlama.io.ecommerce.entities.concretes.Product;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/products")
 public class ProductsController {
     private final ProductService service;
-
-    public ProductsController(ProductService service) {
-        this.service = service;
-    }
 
     @GetMapping
     public List<Product> getAll() {
@@ -41,6 +39,7 @@ public class ProductsController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
         service.delete(id);
+
     }
 
 
